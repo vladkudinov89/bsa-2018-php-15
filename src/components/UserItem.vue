@@ -4,29 +4,29 @@
 
         <div class="content" v-show="!isEditing">
             <div class='meta text-left'>
-             <span class="meta_user">ID:</span>  {{ todo.id }}
+             <span class="meta_user">ID:</span>  {{ user.id }}
             </div>
             <div class='header'>
 
-                <img class="right floated mini ui image" v-if="todo.avatar" :src="todo.avatar" alt="">
-                <img class="right floated mini ui image" v-else="todo.avatar" :src="imageUrl" alt="">
+                <img class="right floated mini ui image" v-if="user.avatar" :src="user.avatar" alt="">
+                <img class="right floated mini ui image" v-else="user.avatar" :src="imageUrl" alt="">
 
             </div>
             <div class='meta text-left'>
-               <span class="meta_user">Name:</span> {{ todo.name }}
+               <span class="meta_user">Name:</span> {{ user.name }}
             </div>
             <div class='meta text-left'>
-              <span class="meta_user">Email:</span>  {{ todo.email }}
+              <span class="meta_user">Email:</span>  {{ user.email }}
             </div>
             <div class='meta text-left'>
-                <span class="meta_user">Phone:</span>  {{ todo.phone }}
+                <span class="meta_user">Phone:</span>  {{ user.phone }}
             </div>
             <div class="extra content">
                 <div class="ui two buttons">
                     <div class="ui basic green button" v-on:click="showForm">
                         Edit
                     </div>
-                    <div class="ui basic red button" v-on:click="deleteTodo(todo)">Delete</div>
+                    <div class="ui basic red button" v-on:click="deleteTodo(user)">Delete</div>
                 </div>
             </div>
         </div>
@@ -35,19 +35,19 @@
             <div class='ui form'>
                 <div class='field'>
                     <label>ID</label>
-                    <input type='text' v-model="todo.id" readonly="readonly">
+                    <input type='text' v-model="user.id" readonly="readonly">
                 </div>
                 <div class='field'>
                     <label>Name</label>
-                    <input type='text' v-model="todo.name">
+                    <input type='text' v-model="user.name">
                 </div>
                 <div class='field'>
                     <label>Email</label>
-                    <input type='email' v-model="todo.email">
+                    <input type='email' v-model="user.email">
                 </div>
                 <div class='field'>
                     <label>Phone</label>
-                    <input type='text' v-model="todo.phone">
+                    <input type='text' v-model="user.phone">
                 </div>
                 <div class='ui two button attached buttons'>
                     <button class='ui basic blue button' v-on:click="hideForm">
@@ -61,7 +61,7 @@
 </template>
 
 <script> export default {
-    props: ['todo'],
+    props: ['user'],
     data() {
         return {
             imageUrl: 'https://intellihr.com.au/wp-content/uploads/2017/06/avatar_placeholder_temporary.png',
@@ -74,8 +74,8 @@
         }, hideForm() {
             this.isEditing = false;
         },
-        deleteTodo(todo) {
-            this.$emit('delete-todo', todo);
+        deleteTodo(user) {
+            this.$emit('delete-user', user);
         },
     },
 }; </script>

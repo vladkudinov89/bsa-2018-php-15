@@ -1,22 +1,22 @@
 <template>
     <div class="user_lists">
 
-        <todo v-on:delete-todo="deleteTodo" v-for="todo in people" :todo.sync="todo" :key="todo.id"></todo>
+        <user-item v-on:delete-user="deleteUser" v-for="user in people" :user.sync="user" :key="user.id"></user-item>
 
     </div>
 </template>
 
 <script>
-    import Todo from "./Todo";
+    import UserItem from "./UserItem";
 
     export default {
-        name: "TodoList",
+        name: "UsersList",
         props: ["people"],
         components: {
-            Todo
+            UserItem
         },
         methods: {
-            deleteTodo(todo) {
+            deleteUser(user) {
                 sweetAlert({
                     title: "Delete User?",
                     icon: "warning",

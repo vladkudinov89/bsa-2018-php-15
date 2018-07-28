@@ -24,7 +24,7 @@
             </div>
 
             <create-user v-on:create-user="createUser" v-bind:people="people.length"></create-user>
-            <TodoList v-bind:people="people"/>
+            <UsersList v-bind:people="people"/>
         </div>
 
     </div>
@@ -33,39 +33,17 @@
 <script>
     // import HelloWorld from "./components/HelloWorld";
     import sweetalert from 'sweetalert';
-    import TodoList from "./components/TodoList";
+    import UsersList from "./components/UsersList";
     import CreateUser from "./components/CreateUser";
 
     export default {
         name: "App",
         components: {
-            TodoList,
+            UsersList,
             CreateUser
         },
         data() {
             return {
-                todos: [
-                    {
-                        title: "Todo A",
-                        project: "Project A",
-                        done: false
-                    },
-                    {
-                        title: "Todo B",
-                        project: "Project B",
-                        done: true
-                    },
-                    {
-                        title: "Todo C",
-                        project: "Project C",
-                        done: false
-                    },
-                    {
-                        title: "Todo D",
-                        project: "Project D",
-                        done: false
-                    }
-                ],
                 people: [
                     {
                         id: 1,
@@ -121,8 +99,6 @@
         },
         methods: {
             createUser(newUser) {
-                // console.log(newUser);
-                // console.log("Create User Method");
                 this.people.push(newUser);
                 sweetalert('Success!', 'New User created!', 'success');
             },
@@ -130,9 +106,6 @@
                 const searchBy = this.searchBy;
                 console.log(searchBy);
                 const searchUser = this.searchUser;
-                // if(searchBy){
-                //     this.btnSearch = false;
-                // }
                 if (searchBy === 'name') {
                     this.people = this.people.filter(function (findUser) {
                         return findUser.name.indexOf(searchUser) > -1;
